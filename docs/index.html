@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dopamine Orbs Studio - TikTok Video Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #8B5CF6 0%, #00E5FF 50%, #FF2D95 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            font-size: 1.5rem;
+            color: #a0a0a0;
+            margin-bottom: 2rem;
+        }
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #d0d0d0;
+            margin-bottom: 3rem;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .feature {
+            background: rgba(139, 92, 246, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        .feature h3 {
+            color: #8B5CF6;
+            margin-bottom: 0.5rem;
+        }
+        .links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .link {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #8B5CF6 0%, #FF2D95 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .link:hover {
+            transform: scale(1.05);
+        }
+        .link.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        footer {
+            margin-top: 3rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #8B5CF6;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dopamine Orbs Studio</h1>
+        <p class="subtitle">Generate & Auto-Publish Satisfying TikTok Videos</p>
+        
+        <div class="description">
+            <p>
+                Dopamine Orbs Studio is a powerful web application that generates original 65-second vertical videos 
+                featuring a satisfying 2D game with bouncing balls, colorful orbs, particles, and stunning visual effects.
+            </p>
+            <p style="margin-top: 1rem;">
+                Create unique, dopamine-inducing content with customizable seeds, themes, and effects. 
+                Schedule or instantly publish your videos directly to TikTok using official TikTok APIs.
+            </p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>🎮 2D Game Engine</h3>
+                <p>Physics-based gameplay with bouncing balls, orbs, and particle effects</p>
+            </div>
+            <div class="feature">
+                <h3>🎨 Customizable</h3>
+                <p>Unique seeds, themes, and intensity settings for endless variations</p>
+            </div>
+            <div class="feature">
+                <h3>📱 TikTok Integration</h3>
+                <p>Direct publishing to TikTok using official Content Posting API</p>
+            </div>
+            <div class="feature">
+                <h3>⏰ Scheduling</h3>
+                <p>Plan your content with built-in scheduling system</p>
+            </div>
+        </div>
+
+        <div class="links">
+            <a href="https://github.com/Titis212142/bounce" class="link" target="_blank">
+                View on GitHub
+            </a>
+            <a href="terms.html" class="link secondary">
+                Terms of Service
+            </a>
+            <a href="privacy.html" class="link secondary">
+                Privacy Policy
+            </a>
+        </div>
+
+        <footer>
+            <p>Built with Next.js, Remotion, and TikTok Content Posting API</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="https://github.com/Titis212142/bounce">Open Source</a> | 
+                <a href="terms.html">Terms</a> | 
+                <a href="privacy.html">Privacy</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
