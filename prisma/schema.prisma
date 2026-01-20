@@ -1,0 +1,98 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String?  @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tokens    TikTokToken[]
+  videos    Video[]
+  jobs      Job[]
+  posts     ScheduledPost[]
+}
+
+model TikTokToken {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken  String   @db.Text // Encrypted
+  refreshToken String   @db.Text // Encrypted
+  expiresAt    DateTime
+  scope        String[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([userId])
+}
+
+model Video {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  seed      Int
+  filename  String
+  path      String
+  duration  Int      // ms
+  title     String
+  hook      String
+  midPrompt String
+  cta       String
+  hashtags  String[]
+  createdAt DateTime @default(now())
+
+  posts ScheduledPost[]
+
+  @@index([userId])
+  @@index([seed])
+}
+
+model Job {
+  id          String   @id @default(cuid())
+  type        String   // generate, render, upload, publish
+  status      String   // pending, processing, completed, failed, cancelled
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  videoId     String?
+  data        Json     @default("{}")
+  error       String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  completedAt DateTime?
+
+  @@index([userId])
+  @@index([status])
+  @@index([type])
+}
+
+model ScheduledPost {
+  id            String   @id @default(cuid())
+  videoId       String
+  video         Video    @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  scheduledAt   DateTime
+  caption       String   @db.Text
+  hashtags      String[]
+  mode          String   // upload_only, direct_post
+  status        String   // draft, scheduled, uploading, uploaded, published, failed, action_required
+  tiktokVideoId String?
+  error         String?  @db.Text
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([userId])
+  @@index([status])
+  @@index([scheduledAt])
+}
